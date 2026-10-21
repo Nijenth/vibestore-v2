@@ -1,0 +1,415 @@
+/* Product Details Page — desktop values follow the 1440px Figma frame, mobile values the 390px frame. */
+
+.pdp-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pdp-breadcrumb li + li::before {
+  content: '/';
+  margin: 0 12px;
+}
+
+.pdp-breadcrumb a:hover {
+  color: var(--color-ink);
+  text-decoration: underline;
+}
+
+.pdp-breadcrumb [aria-current='page'] {
+  color: var(--color-text-secondary);
+}
+
+.pdp-back {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 4px;
+  color: var(--color-violet);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.pdp-back:hover {
+  text-decoration: underline;
+}
+
+.pdp-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 660fr) minmax(0, 586fr);
+  column-gap: clamp(32px, 4.6vw, 66px);
+  align-items: start;
+  margin-top: 10px;
+}
+
+/* Gallery */
+
+.pdp-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 660 / 606;
+  border-radius: 20px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+}
+
+/* Pin images to the frame: a percentage height inside the grid would size them as squares and overflow the 660 × 606 frame. */
+.pdp-stage img,
+.pdp-thumbnail img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pdp-stage.pdp-image--cutout img {
+  object-fit: contain;
+  filter: var(--product-shadow);
+}
+
+.pdp-image--full-frame img {
+  object-fit: cover;
+}
+
+.pdp-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pdp-thumbnail {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 148 / 122;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+}
+
+.pdp-thumbnail.pdp-image--cutout img {
+  object-fit: contain;
+}
+
+.pdp-thumbnail:hover {
+  border-color: var(--color-border);
+}
+
+.pdp-thumbnail[aria-pressed='true'] {
+  border-color: var(--color-violet);
+  background: var(--color-hero);
+}
+
+/* Product information */
+
+.pdp-info {
+  padding-top: 4px;
+}
+
+.pdp-eyebrow {
+  color: var(--color-violet);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.pdp-info h1 {
+  margin-top: 18px;
+  font-size: 43px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pdp-subtitle {
+  margin-top: 16px;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+}
+
+.pdp-price {
+  margin-top: 16px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.pdp-summary {
+  max-width: 470px;
+  margin-top: 30px;
+  color: var(--color-text-secondary);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.pdp-quantity {
+  margin-top: 44px;
+}
+
+.pdp-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.quantity-selector {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 162px;
+  height: 54px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-float);
+}
+
+.quantity-selector button {
+  width: 48px;
+  height: 44px;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.quantity-selector button:hover:not(:disabled) {
+  background: var(--color-border);
+}
+
+.quantity-selector button:disabled {
+  color: var(--color-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.quantity-selector output {
+  min-width: 36px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.pdp-add {
+  display: flex;
+  width: 100%;
+  min-height: 54px;
+  margin-top: 28px;
+  box-shadow: var(--shadow-float);
+}
+
+.pdp-add:disabled,
+.pdp-add:disabled:hover {
+  background: var(--color-muted);
+  cursor: not-allowed;
+}
+
+.pdp-limit {
+  margin-top: 12px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.pdp-note {
+  margin-top: 22px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.pdp-highlights {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.pdp-highlights h2 {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.pdp-highlights ul {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Specifications */
+
+.pdp-specs {
+  margin-top: 56px;
+}
+
+.pdp-specs h2 {
+  margin-top: 12px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.pdp-spec-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 58px;
+  margin: 30px 0 0;
+  padding-top: 26px;
+  border-top: 1px solid var(--color-border);
+}
+
+.pdp-spec-list dt {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.pdp-spec-list dd {
+  margin: 12px 0 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Not found */
+
+.pdp-not-found {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 72px 0;
+  text-align: center;
+}
+
+.pdp-not-found h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.pdp-not-found p {
+  margin: 16px 0 28px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Single column below 900px; mobile sizes from the 390px frame below 768px. */
+
+@media (max-width: 899px) {
+  .pdp-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pdp-info {
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pdp-breadcrumb ol {
+    font-size: 13px;
+  }
+
+  .pdp-breadcrumb li + li::before {
+    margin: 0 8px;
+  }
+
+  .pdp-back {
+    display: none;
+  }
+
+  .pdp-layout {
+    margin-top: 20px;
+  }
+
+  .pdp-stage {
+    aspect-ratio: 358 / 354;
+    border-radius: 18px;
+  }
+
+  .pdp-thumbnails {
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .pdp-thumbnail {
+    aspect-ratio: 79 / 81;
+    border-radius: 10px;
+  }
+
+  .pdp-info h1 {
+    margin-top: 14px;
+    font-size: 30px;
+  }
+
+  .pdp-subtitle {
+    margin-top: 12px;
+    font-size: 16px;
+  }
+
+  .pdp-price {
+    margin-top: 12px;
+    padding-bottom: 0;
+    border-bottom: 0;
+    font-size: 27px;
+  }
+
+  .pdp-summary {
+    margin-top: 20px;
+    font-size: 15px;
+  }
+
+  .pdp-quantity {
+    margin-top: 32px;
+  }
+
+  .quantity-selector {
+    height: 52px;
+  }
+
+  .pdp-add {
+    margin-top: 24px;
+  }
+
+  .pdp-note {
+    margin-top: 16px;
+    font-size: 12px;
+  }
+
+  .pdp-specs {
+    margin-top: 40px;
+  }
+
+  .pdp-specs h2 {
+    font-size: 22px;
+  }
+
+  .pdp-spec-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .pdp-spec-list dd {
+    margin-top: 6px;
+    font-size: 15px;
+  }
+}
