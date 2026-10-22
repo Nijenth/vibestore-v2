@@ -134,15 +134,29 @@ test('quantity is limited by the room left in the bag', async t => {
   assert.ok(await page.getByText('Your bag already has the maximum 99 of this product.', { exact: true }).isVisible());
 });
 
-test('single-image product shows no thumbnails, and navigation back keeps storefront filters', async t => {
+test('earbuds gallery shows four images, and navigation back keeps storefront filters', async t => {
   const page = await openPage(t);
   await page.getByLabel('Sort by', { exact: true }).selectOption({ label: 'Price: High to Low' });
   await page.getByRole('link', { name: 'Earbuds', exact: true }).click();
   await page.waitForURL(`${baseURL}/products/earbuds`);
   await headingShown(page, 'Earbuds');
-  assert.equal(await page.locator('.pdp-thumbnails').count(), 0, 'No thumbnail strip for one image');
+  const earbudsThumbnails = page.getByRole('list', {
+  name: 'Earbuds images',
+}).getByRole('button');
+
+assert.equal(await earbudsThumbnails.count(), 4);
+
+await earbudsThumbnails.nth(1).click();
+
+assert.ok(
+  (await page.locator('.pdp-stage img').getAttribute('src'))
+    .includes('earbuds-profile')
+);
   assert.ok(await loaded(stageImage(page)));
-  assert.equal(await stageImage(page).getAttribute('alt'), 'Navy stemless earbuds with champagne-gold trim in an open charging case');
+  assert.equal(
+    await stageImage(page).getAttribute('alt'),
+    'Profile view of navy earbuds and charging case'
+  );
   await page.getByRole('link', { name: 'Back to shop', exact: true }).click();
   await page.waitForURL(`${baseURL}/`);
   await catalogShown(page);

@@ -4,7 +4,13 @@ import headphonesProfile from '../assets/catalog/headphones-profile.webp';
 import headphonesDetail from '../assets/catalog/headphones-detail.webp';
 import headphonesContext from '../assets/catalog/headphones-context.webp';
 import smartwatch from '../assets/catalog/smartwatch-main.webp';
+import smartwatchProfile from '../assets/catalog/smartwatch-profile.webp';
+import smartwatchDetail from '../assets/catalog/smartwatch-detail.webp';
+import smartwatchContext from '../assets/catalog/smartwatch-context.webp';
 import earbuds from '../assets/catalog/earbuds-main.webp';
+import earbudsProfile from '../assets/catalog/earbuds-profile.webp';
+import earbudsDetail from '../assets/catalog/earbuds-detail.webp';
+import earbudsContext from '../assets/catalog/earbuds-context.webp';
 import type { Product } from '../types/product';
 
 export const heroImage = headphones;
@@ -42,7 +48,26 @@ export const featuredProducts: Product[] = [
     description: 'Smart Fitness & Health Tracking',
     image: smartwatch,
     gallery: [
-      { src: smartwatch, kind: 'cutout', alt: 'Champagne-gold square smartwatch with an olive leather strap and a dark watch face showing time and activity readings' },
+      {
+        src: smartwatch,
+        kind: 'cutout',
+        alt: 'Champagne-gold smartwatch with olive leather strap',
+      },
+      {
+        src: smartwatchProfile,
+        kind: 'cutout',
+        alt: 'Three-quarter profile of the smartwatch',
+      },
+      {
+        src: smartwatchDetail,
+        kind: 'full-frame',
+        alt: 'Close-up of the smartwatch case and strap',
+      },
+      {
+        src: smartwatchContext,
+        kind: 'full-frame',
+        alt: 'Smartwatch photographed in a luxury setting',
+      },
     ],
     details: {
       summary: 'A fictional smartwatch concept pairing a champagne-gold case with a soft olive strap and a clean, readable watch face.',
@@ -63,7 +88,26 @@ export const featuredProducts: Product[] = [
     description: 'Compact Wireless Sound',
     image: earbuds,
     gallery: [
-      { src: earbuds, kind: 'cutout', alt: 'Navy stemless earbuds with champagne-gold trim in an open charging case' },
+      {
+        src: earbuds,
+        kind: 'cutout',
+        alt: 'Navy wireless earbuds with champagne-gold trim',
+      },
+      {
+        src: earbudsProfile,
+        kind: 'cutout',
+        alt: 'Profile view of navy earbuds and charging case',
+      },
+      {
+        src: earbudsDetail,
+        kind: 'full-frame',
+        alt: 'Close-up of earbuds and gold accent details',
+      },
+      {
+        src: earbudsContext,
+        kind: 'full-frame',
+        alt: 'Wireless earbuds displayed in a lifestyle setting',
+      },
     ],
     details: {
       summary: 'A fictional earbuds concept in deep navy, with champagne-gold trim on each bud and along the compact charging case.',
